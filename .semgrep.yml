@@ -1,0 +1,20 @@
+rules:
+- id: py-sql-injection-fstring
+  patterns:
+  - pattern: |
+      $DB.execute(f"...")
+  message: "Possível SQL Injection via f-string. Use parâmetros."
+  severity: ERROR
+  languages: [python]
+
+- id: py-pickle-loads
+  pattern: pickle.loads(...)
+  message: "Desserialização insegura com pickle.loads"
+  severity: ERROR
+  languages: [python]
+
+- id: py-os-system
+  pattern: os.system(...)
+  message: "Possível command injection via os.system"
+  severity: ERROR
+  languages: [python]
